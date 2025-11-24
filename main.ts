@@ -17,19 +17,25 @@ export default class MdxTools extends Plugin {
 				this.addNewFileSubmenu(menu, folder);
 			})
 		);
+
+		this.addRibbonIcon("document", "Create new note", (evt: MouseEvent) => {
+			const menu = new Menu();
+			const folder = this.app.vault.getRoot().path;
+			menu.addItem(item =>
+				item.setTitle("New .md note").onClick(() => this.createFile(folder, "md"))
+			);
+			menu.addItem(item =>
+				item.setTitle("New .mdx note").onClick(() => this.createFile(folder, "mdx"))
+			);
+			menu.showAtMouseEvent(evt);
+		});
 	}
 
 	addNewFileSubmenu(menu: Menu, fileOrFolder: TAbstractFile) {
 		const folder = this.resolveFolder(fileOrFolder);
 
-		menu.addSeparator();
 		menu.addItem(item => {
-		item.setTitle("New .md file")
-			.onClick(() => this.createFile(folder, "md"));
-		});
-
-		menu.addItem(item => {
-	    item.setTitle("New .mdx file")
+	    item.setTitle("New .mdx note")
 		    .onClick(() => this.createFile(folder, "mdx"));
 		});
 	}
@@ -45,19 +51,17 @@ export default class MdxTools extends Plugin {
 		const baseName = "Untitled";
 		let i = 0;
 		let filename: string;
-
 		const filesInFolder = this.app.vault.getFiles().filter(file => {
-			return file.parent?.path === folder || file.path.startsWith(folder + "/");
+			return (file.parent?.path === folder || file.path.startsWith(folder + "/"))
+				&& file.path.endsWith(`.${ext}`);
 		});
-
 		while (true) {
 			filename = i === 0 ? `${baseName}.${ext}` : `${baseName} ${i}.${ext}`;
 			const filepath = normalizePath(`${folder}/${filename}`);
+
 			const exists = filesInFolder.some(file => {
 				const fName = file.path.split("/").pop();
-				if (!fName) return false;
-				const nameOnly = fName.replace(/\.[^/.]+$/, "");
-				return nameOnly === (i === 0 ? baseName : `${baseName} ${i}`);
+				return fName === filename;
 			});
 
 			if (!exists) {
