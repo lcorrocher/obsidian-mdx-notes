@@ -17,12 +17,6 @@ export default class MdxTools extends Plugin {
 				this.addNewFileSubmenu(menu, folder);
 			})
 		);
-
-		this.addRibbonIcon("document", "Create test MDX", () => {
-        const folder = this.app.vault.getRoot().path;
-        this.createFile(folder, "mdx");
-        console.log("Test MDX file created in folder:", folder);
-    });
 	}
 
 	addNewFileSubmenu(menu: Menu, fileOrFolder: TAbstractFile) {
