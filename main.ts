@@ -48,18 +48,25 @@ export default class MdxTools extends Plugin {
 	}
 
 	createFile(folder: string, ext: "md" | "mdx") {
-		let base = `Untitled.${ext}`;
-		let filepath = normalizePath(`${folder}/${base}`);
+		const baseName = "Untitled";
+		let i = 0;
+		let filename: string;
 
-		if (!this.app.vault.getAbstractFileByPath(filepath)) {
-			this.app.vault.create(filepath, "");
-			return;
-		}
+		const filesInFolder = this.app.vault.getFiles().filter(file => {
+			return file.parent?.path === folder || file.path.startsWith(folder + "/");
+		});
 
-		let i = 1;
 		while (true) {
-			filepath = normalizePath(`${folder}/Untitled ${i}.${ext}`);
-			if (!this.app.vault.getAbstractFileByPath(filepath)) {
+			filename = i === 0 ? `${baseName}.${ext}` : `${baseName} ${i}.${ext}`;
+			const filepath = normalizePath(`${folder}/${filename}`);
+			const exists = filesInFolder.some(file => {
+				const fName = file.path.split("/").pop();
+				if (!fName) return false;
+				const nameOnly = fName.replace(/\.[^/.]+$/, "");
+				return nameOnly === (i === 0 ? baseName : `${baseName} ${i}`);
+			});
+
+			if (!exists) {
 				this.app.vault.create(filepath, "");
 				break;
 			}
