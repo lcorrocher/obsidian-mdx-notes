@@ -1,4 +1,4 @@
-# Edit-MDX
+# MDX Notes
 
 A plugin for [Obsidian](https://obsidian.md) which allows users to create and edit mdx files as if they were markdown (.md) files. Does not preview MDX.
 
