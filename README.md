@@ -2,14 +2,17 @@
 
 A plugin for [Obsidian](https://obsidian.md) which allows users to create and edit mdx files as if they were markdown (.md) files. Does not preview MDX.
 
-Features:
+MDX (Markdown + JSX) is a file format that lets you write Markdown content but embed React components directly inside it.
+It acts as interactive, component-powered Markdown.
+
+## Features:
 - Registers .mdx file extension as markdown
 - Ribbon button creates .md or .mdx notes
 - File and note context menu create new .mdx notes
 
 Forked from https://github.com/timppeters/obsidian-edit-mdx.git -> fork of https://github.com/Basil-Mori/obsidian-edit-gemini 
 
-### Compatibility
+## Compatibility
 The required APIs were added in Obsidian **0.11.0**, so that's the minimum required version.
 
 ## How to Use
