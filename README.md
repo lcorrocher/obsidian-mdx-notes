@@ -10,7 +10,9 @@ It acts as interactive, component-powered Markdown.
 - Ribbon button creates .md or .mdx notes
 - File and note context menu create new .mdx notes
 
-Forked from https://github.com/timppeters/obsidian-edit-mdx.git -> fork of https://github.com/Basil-Mori/obsidian-edit-gemini 
+Forked from: 
+https://github.com/timppeters/obsidian-edit-mdx.git
+https://github.com/Basil-Mori/obsidian-edit-gemini 
 
 ## Compatibility
 The required APIs were added in Obsidian **0.11.0**, so that's the minimum required version.
