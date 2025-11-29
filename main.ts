@@ -2,9 +2,8 @@ import { Plugin, normalizePath, TAbstractFile, Menu } from 'obsidian';
 
 export default class MdxTools extends Plugin {
 
-	async onload() {
-		console.log("MdxTools plugin loaded");
-		this.registerExtensions(["mdx"], "markdown");
+	onload() {
+		void this.registerExtensions(["mdx"], "markdown");
 
 		this.registerEvent(
 			this.app.workspace.on("file-menu", (menu, file) => {
@@ -47,7 +46,7 @@ export default class MdxTools extends Plugin {
 		return fileOrFolder.parent?.path ?? '/';
 	}
 
-	createFile(folder: string, ext: "md" | "mdx") {
+	 createFile(folder: string, ext: "md" | "mdx") {
 		const baseName = "Untitled";
 		let i = 0;
 		let filename: string;
@@ -65,7 +64,7 @@ export default class MdxTools extends Plugin {
 			});
 
 			if (!exists) {
-				this.app.vault.create(filepath, "");
+				void this.app.vault.create(filepath, "");
 				break;
 			}
 			i++;
