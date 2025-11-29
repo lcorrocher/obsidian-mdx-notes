@@ -1,10 +1,11 @@
 {
-	"id": "edit-mdx",
-	"name": "Edit MDX",
-	"version": "1.0.1",
+	"id": "mdx-notes",
+	"name": "MDX Notes",
+	"version": "1.0.0",
 	"minAppVersion": "0.11.0",
-	"description": "Allows the user to edit and create .mdx files.",
-	"author": "Tim Peters",
-	"authorUrl": "https://timpeters.net",
+	"description": "Create and edit MDX files as notes. Right click and select new MDX note",
+	"author": "Luca Corrocher",
+	"authorUrl": "https://github.com/lcorrocher",
+	"fundingURL": "https://buymeacoffee.com/lcorrocher",
 	"isDesktopOnly": false
 }
