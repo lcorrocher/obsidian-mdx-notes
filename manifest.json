@@ -3,9 +3,8 @@
 	"name": "MDX Notes",
 	"version": "1.0.0",
 	"minAppVersion": "0.11.0",
-	"description": "Create and edit MDX files as notes. Right click and select new MDX note",
+	"description": "Create and edit MDX files as notes. Right click and select new MDX note.",
 	"author": "lcorrocher",
 	"authorUrl": "https://github.com/lcorrocher",
-	"fundingURL": "https://buymeacoffee.com/lcorrocher",
 	"isDesktopOnly": false
 }
